@@ -1,0 +1,73 @@
+<mat-sidenav-container class="sidenav-container" *ngIf="ready">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport="true" fixedTopGap="0" fixedBottomGap="0" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+        <mat-toolbar>
+            <img src="../assets/logo.png" style="width: 180px;" alt="Injectronic">
+        </mat-toolbar>
+        <button mat-button [matMenuTriggerFor]="menu">{{ translate.currentLang | lang}}</button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item *ngFor="let lang of translate.getLangs()" (click)="switchLang(lang)">{{ lang | lang }}</button>
+        </mat-menu>
+        <mat-divider></mat-divider>
+        <mat-nav-list>
+            <mat-list-item routerLink="/cms/home" routerLinkActive="active">
+                <mat-icon mat-list-icon>home</mat-icon>
+                <h4 mat-line>{{ 'sidenav-home' | translate }}</h4>
+            </mat-list-item>
+            <a>
+                <mat-list-item>
+                    <mat-icon mat-list-icon>manage_accounts</mat-icon>
+                    <h4 mat-line>{{ 'sidenav-distributors' | translate }}</h4>
+                </mat-list-item>
+            </a>
+            <a>
+                <mat-list-item>
+                    <mat-icon mat-list-icon>support</mat-icon>
+                    <h4 mat-line>{{ 'sidenav-help' | translate }}</h4>
+                </mat-list-item>
+            </a>
+            <a>
+                <mat-list-item>
+                    <mat-icon mat-list-icon>get_app</mat-icon>
+                    <h4 mat-line>{{ 'sidenav-downloads' | translate }}</h4>
+                </mat-list-item>
+            </a>
+            <a>
+                <mat-list-item>
+                    <mat-icon mat-list-icon>military_tech</mat-icon>
+                    <h4 mat-line>{{ 'sidenav-warranty' | translate }}</h4>
+                </mat-list-item>
+            </a>
+            <a>
+                <mat-list-item>
+                    <mat-icon mat-list-icon>ondemand_video</mat-icon>
+                    <h4 mat-line>{{ 'sidenav-videos' | translate }}</h4>
+                </mat-list-item>
+            </a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar>
+            <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
+                <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+            </button>
+            <span>{{ 'app-title' | translate }}</span>
+            <span class="spacer"></span>
+            <button mat-icon-button>
+                <mat-icon>account_box</mat-icon>
+              </button>
+            <button mat-icon-button>
+               <mat-icon>exit_to_app</mat-icon>
+             </button>
+        </mat-toolbar>
+
+        <!--MAIN CONTENT-->
+        <router-outlet></router-outlet>
+
+        <mat-toolbar>
+            <span class='spacer'></span>
+            <h3>© Injectronic 2021</h3>
+            <span class='spacer'></span>
+        </mat-toolbar>
+
+    </mat-sidenav-content>
+</mat-sidenav-container>

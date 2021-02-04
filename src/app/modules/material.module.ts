@@ -25,6 +25,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatSliderModule} from '@angular/material/slider'; 
 import {MatBadgeModule} from '@angular/material/badge'; 
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'; 
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   imports: [
@@ -82,7 +83,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatDialogModule,
     MatSliderModule,
     MatBadgeModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatRadioModule
   ]
 })
 

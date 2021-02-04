@@ -1,0 +1,112 @@
+<app-header [title]="'header-register' | translate"></app-header>
+<form [formGroup]="pinForm" novalidate (ngSubmit)="onSubmit()">
+    <mat-card class="shipping-card">
+        <mat-card-header>
+            <mat-card-title>{{ 'form-register-title' | translate }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput [placeholder]="'firstName' | translate" formControlName="firstName">
+                        <mat-error *ngIf="pinForm.controls['firstName'].hasError('required')">
+                            {{ 'firstName' | translate }} <strong>{{ 'required'| translate }}</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput [placeholder]="'lastName' | translate" formControlName="lastName">
+                        <mat-error *ngIf="pinForm.controls['lastName'].hasError('required')">
+                            {{ 'lastName' | translate }} <strong>{{ 'required'| translate }}</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <textarea matInput [placeholder]="'email' | translate" formControlName="email"></textarea>
+                        <mat-error *ngIf="pinForm.controls['email'].hasError('required')">
+                            {{ 'email' | translate }} <strong>{{ 'required'| translate }}</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <textarea matInput [placeholder]="'telephone' | translate" formControlName="tel"></textarea>
+                        <mat-error *ngIf="pinForm.controls['tel'].hasError('required')">
+                            {{ 'telephone' | translate }} <strong>{{ 'required'| translate }}</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <textarea matInput [placeholder]="'address' | translate" formControlName="address"></textarea>
+                        <mat-error *ngIf="pinForm.controls['address'].hasError('required')">
+                            {{ 'address' | translate }} <strong>{{ 'required'| translate }}</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput [placeholder]="'city' | translate" formControlName="city">
+                        <mat-error *ngIf="pinForm.controls['city'].hasError('required')">
+                            {{ 'city' | translate }} <strong>{{ 'required'| translate }}</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput [placeholder]="'country' | translate" formControlName="country">
+                        <mat-error *ngIf="pinForm.controls['country'].hasError('required')">
+                            {{ 'country' | translate }} <strong>{{ 'required'| translate }}</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput #postalCode maxlength="5" [placeholder]="'postalCode' | translate" type="number" formControlName="postalCode">
+                        <mat-hint align="end">{{ postalCode.value.length }} / 5</mat-hint>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput formControlName="pin" [placeholder]="'pin' | translate">
+                        <mat-error *ngIf="pinForm.controls['pin'].hasError('required')">
+                            {{ 'pin' | translate }} <strong>{{ 'required'| translate }}</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput formControlName="sn" [placeholder]="'serial-number' | translate">
+                        <mat-error *ngIf="pinForm.controls['sn'].hasError('required')">
+                            {{ 'serial-number' | translate }} <strong>{{ 'required'| translate }}</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="alert alert-danger" role="alert">
+                        {{ 'alert-sn' | translate }}
+                    </div>
+                    <img src="../../../assets/sn.png">
+
+                </div>
+            </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" type="submit">{{ 'send' | translate }}</button>
+        </mat-card-actions>
+    </mat-card>
+</form>
