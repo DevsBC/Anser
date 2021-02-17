@@ -24,5 +24,6 @@
     "serial-number": "Serial Number (S/N)",
     "alert-sn": "CJ4 SERIAL NUMBER IS LOCATED ON THE BACK OF THE UNIT",
     "send": "Send",
-    "required": "Required"
+    "required": "Required",
+    "request-unlock-code": "Request unlock code"
 }

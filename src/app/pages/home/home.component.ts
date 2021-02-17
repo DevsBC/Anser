@@ -35,4 +35,8 @@ export class HomeComponent implements OnInit {
     this.router.navigateByUrl('/cms/register');
   }
 
+  public consult(dig: string) {
+    this.router.navigateByUrl(`/cms/consult-${dig}`);
+  }
+
 }

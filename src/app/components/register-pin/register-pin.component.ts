@@ -33,6 +33,9 @@ export class RegisterPinComponent implements OnInit {
   }
 
   public onSubmit(): void {
+    if (this.pinForm.invalid) { return; }
+
+    console.log(this.pinForm.value);
     alert('Thanks!');
   }
 

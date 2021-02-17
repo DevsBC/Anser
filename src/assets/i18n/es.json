@@ -24,5 +24,6 @@
     "serial-number": "Número de serie (S/N)",
     "alert-sn": "NUMERO DE SERIE DEL CJ4 SE ENCUENTRA EN LA PARTE POSTERIOR DEL EQUIPO",
     "send": "Enviar",
-    "required": "Requerido"
+    "required": "Requerido",
+    "request-unlock-code": "Solicitar Código de Desbloqueo"
 }

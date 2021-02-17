@@ -1,0 +1,27 @@
+<app-header [title]="'request-unlock-code' | translate"></app-header>
+<form class="animate__animated animate__fadeIn text-center" [formGroup]="pinForm" (ngSubmit)="onSubmit()">
+    <mat-card>
+        <img src="../../../assets/Tarjeta9542.png">
+        <mat-card-subtitle>
+            <h3>Para poder consultar/solicitar actualizaciones favor de introducir su PIN de 12 dígitos</h3>
+        </mat-card-subtitle>
+        <mat-form-field class="full-width">
+            <input matInput maxlength="12" minlength="12" placeholder="Número PIN (12 dígitos)" required formControlName="pin">
+            <mat-error *ngIf="pinForm.controls['pin'].hasError('required')">
+                {{ 'pin' | translate }} <strong>{{ 'required'| translate }}</strong>
+            </mat-error>
+        </mat-form-field>
+        <mat-card-actions>
+            <div class="row">
+                <div class="col">
+                    <button mat-raised-button color="primary" type="submit">Consultar</button>
+                </div>
+                <div class="col">
+                    <button mat-raised-button color="accent">Olvidé mi PIN</button>
+                </div>
+            </div>
+        </mat-card-actions>
+    </mat-card>
+
+
+</form>

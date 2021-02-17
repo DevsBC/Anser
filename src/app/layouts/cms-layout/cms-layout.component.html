@@ -46,7 +46,7 @@
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
-        <mat-toolbar>
+        <mat-toolbar class="position-fixed">
             <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
                 <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
             </button>
@@ -61,7 +61,7 @@
         </mat-toolbar>
 
         <!--MAIN CONTENT-->
-        <router-outlet></router-outlet>
+        <router-outlet style="padding-top: 15px;"></router-outlet>
 
         <mat-toolbar>
             <span class='spacer'></span>

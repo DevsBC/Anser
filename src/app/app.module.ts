@@ -17,6 +17,8 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { LangPipe } from './pipes/lang.pipe';
+import { ConsultDig12Component } from './components/consult-dig12/consult-dig12.component';
+import { ConsultDig14Component } from './components/consult-dig14/consult-dig14.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { LangPipe } from './pipes/lang.pipe';
     HeaderComponent,
     CardOptionComponent,
     RegisterPinComponent,
-    LangPipe
+    LangPipe,
+    ConsultDig12Component,
+    ConsultDig14Component
   ],
   imports: [
     BrowserModule,
