@@ -11,6 +11,9 @@ export class HeaderComponent implements OnInit {
 
   constructor() { }
 
+  /**
+   * Hola soy un header
+   */
   ngOnInit(): void {
   }
 
