@@ -22,11 +22,11 @@ import { CommonModule } from '@angular/common';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatTreeModule} from '@angular/material/tree';
 import {MatDialogModule} from '@angular/material/dialog';
-import {MatSliderModule} from '@angular/material/slider'; 
-import {MatBadgeModule} from '@angular/material/badge'; 
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'; 
+import {MatSliderModule} from '@angular/material/slider';
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatRadioModule } from '@angular/material/radio';
-
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 @NgModule({
   imports: [
     CommonModule,
@@ -54,7 +54,8 @@ import { MatRadioModule } from '@angular/material/radio';
     MatDialogModule,
     MatSliderModule,
     MatBadgeModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSnackBarModule
   ],
   declarations: [],
   exports: [
@@ -84,7 +85,8 @@ import { MatRadioModule } from '@angular/material/radio';
     MatSliderModule,
     MatBadgeModule,
     MatProgressSpinnerModule,
-    MatRadioModule
+    MatRadioModule,
+    MatSnackBarModule
   ]
 })
 

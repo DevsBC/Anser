@@ -125,6 +125,10 @@
               "devServerTarget": "pin-manager:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
     }

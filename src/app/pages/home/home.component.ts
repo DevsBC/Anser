@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { CalendarOptions } from '@fullcalendar/angular';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogEventComponent } from '../../components/dialog-event/dialog-event.component';
+import { DatabaseService } from '../../services/database.service';
 
 @Component({
   selector: 'app-home',
@@ -10,33 +12,48 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
-    map(({ matches }) => {
-      if (matches) {
-        return {
-          columns: 1,
-          card: { cols: 1, rows: 2 }
-        };
-      }
+  calendarOptions: CalendarOptions = {
+    initialView: 'dayGridWeek',
+    locale: 'es',
+    height: 600,
+    dateClick: this.handleDateClick.bind(this), // bind is important!
+    events: [
+      { title: 'Juan Carlos Aranda Alonso', date: '2021-02-22T08:50', id: 'sdsds' },
+      { title: 'event 2', date: '2021-02-23', id: '322dds' }
+    ],
+    eventClick: this.showEvent.bind(this)
+  };
+  ready = false;
 
-      return {
-        columns: 3,
-        card: { cols: 1, rows: 2 }
-      };
-    })
-  );
-
-  constructor(private breakpointObserver: BreakpointObserver, private router: Router) { }
+  constructor(public dialog: MatDialog, private database: DatabaseService) {
+    this.database.getEvents().subscribe((events: any) => {
+      console.log(events);
+      this.calendarOptions.events = events;
+      this.ready = true;
+    });
+  }
 
   ngOnInit(): void {
   }
 
-  public register(): void {
-    this.router.navigateByUrl('/cms/register');
+  handleDateClick(arg: any): void {
+    this.openDialog({date: arg.dateStr });
+    console.log(arg);
   }
 
-  public consult(dig: string) {
-    this.router.navigateByUrl(`/cms/consult-${dig}`);
+  showEvent(arg: any): void {
+    this.openDialog({id: arg.event.id });
+  }
+
+  public openDialog(event: any): void {
+    const dialogRef = this.dialog.open(DialogEventComponent, {
+      width: '800px',
+      data: event
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
 }

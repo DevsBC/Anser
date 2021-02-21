@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Observable } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +11,21 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-  title = 'pin-manager';
+
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+    .pipe(
+      map(result => result.matches),
+      shareReplay()
+  );
+
+  isAuth = false;
+
+  constructor(private breakpointObserver: BreakpointObserver, private auth: AuthService) {
+    this.isAuth = this.auth.isAuthenticated();
+  }
+
+  signOut(): void {
+    localStorage.removeItem('session-anser');
+    location.reload();
+  }
 }

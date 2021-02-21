@@ -1,12 +1,6 @@
-<app-header [title]="'header-home' | translate"></app-header>
-<mat-grid-list cols="{{ ( cards | async )?.columns }}" rowHeight="200px" class="animate__animated animate__fadeIn">
-    <mat-grid-tile [colspan]="( cards | async )?.card!.cols" [rowspan]="( cards | async )?.card!.rows">
-        <app-card-option src="../../../assets/Tarjeta9563.png" [title]="'register-license' | translate" (click)="register()"></app-card-option>
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="( cards | async )?.card!.cols" [rowspan]="( cards | async )?.card!.rows">
-        <app-card-option src="../../../assets/Tarjeta9542.png" [title]="'consult-12' | translate" (click)="consult('12')"></app-card-option>
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="( cards | async )?.card!.cols" [rowspan]="( cards | async )?.card!.rows">
-        <app-card-option src="../../../assets/Tarjeta9563.png" [title]="'consult-14' | translate" (click)="consult('14')"></app-card-option>
-    </mat-grid-tile>
-</mat-grid-list>
+<app-header title="Turnos"></app-header>
+<div class="row" *ngIf="ready">
+    <div class="col">
+        <full-calendar [options]="calendarOptions"></full-calendar>
+    </div>
+</div>

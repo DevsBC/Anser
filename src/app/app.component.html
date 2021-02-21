@@ -1,1 +1,49 @@
-<router-outlet></router-outlet>
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport="true" fixedTopGap="0" fixedBottomGap="0" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+        <mat-toolbar color="primary" *ngIf="isAuth">
+            <span>Menu</span>
+        </mat-toolbar>
+        <mat-nav-list *ngIf="isAuth">
+            <mat-list-item routerLink="home" routerLinkActive="active">
+                <mat-icon mat-list-icon>today</mat-icon>
+                <h4 mat-line>Turnos</h4>
+            </mat-list-item>
+            <mat-list-item routerLink="patients" routerLinkActive="active">
+                <mat-icon mat-list-icon>person_pin</mat-icon>
+                <h4 mat-line>Pacientes</h4>
+            </mat-list-item>
+            <mat-list-item routerLink="users" routerLinkActive="active">
+                <mat-icon mat-list-icon>people</mat-icon>
+                <h4 mat-line>Usuarios</h4>
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar color="primary" *ngIf="isAuth">
+            <mat-toolbar-row>
+                <button mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
+                <mat-icon>menu</mat-icon>
+            </button>
+                <span>Anser</span>
+                <span class="spacer"></span>
+                <button mat-icon-button>
+                    <mat-icon>portrait</mat-icon>
+                </button>
+                <button mat-icon-button (click)="signOut()">
+                    <mat-icon>logout</mat-icon>
+                </button>
+            </mat-toolbar-row>
+
+        </mat-toolbar>
+
+        <!--MAIN CONTENT-->
+        <router-outlet></router-outlet>
+
+        <mat-toolbar *ngIf="isAuth">
+            <span class='spacer'></span>
+            <h3>© Anser 2021</h3>
+            <span class='spacer'></span>
+        </mat-toolbar>
+
+    </mat-sidenav-content>
+</mat-sidenav-container>

@@ -7,31 +7,35 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HomeComponent } from './pages/home/home.component';
-import { CmsLayoutComponent } from './layouts/cms-layout/cms-layout.component';
 import { MaterialElevationDirective } from './directives/material-elevation.directive';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './components/header/header.component';
-import { CardOptionComponent } from './components/card-option/card-option.component';
-import { RegisterPinComponent } from './components/register-pin/register-pin.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { LangPipe } from './pipes/lang.pipe';
-import { ConsultDig12Component } from './components/consult-dig12/consult-dig12.component';
-import { ConsultDig14Component } from './components/consult-dig14/consult-dig14.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import { DialogEventComponent } from './components/dialog-event/dialog-event.component';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { environment } from '../environments/environment.prod';
+import { LoginComponent } from './pages/login/login.component';
+
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+  interactionPlugin
+]);
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    CmsLayoutComponent,
     MaterialElevationDirective,
     HeaderComponent,
-    CardOptionComponent,
-    RegisterPinComponent,
-    LangPipe,
-    ConsultDig12Component,
-    ConsultDig14Component
+    DialogEventComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -40,21 +44,16 @@ import { ConsultDig14Component } from './components/consult-dig14/consult-dig14.
     BrowserAnimationsModule,
     MaterialModule,
     FlexLayoutModule,
+    FormsModule,
     ReactiveFormsModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: httpTranslateLoader,
-        deps: [HttpClient]
-      }
-    })
+    FullCalendarModule,
+    NgxMaterialTimepickerModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
-// AOT compilation support
-export function httpTranslateLoader(http: HttpClient): TranslateHttpLoader {
-  return new TranslateHttpLoader(http);
-}
